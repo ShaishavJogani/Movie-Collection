@@ -28,6 +28,10 @@ public class ParseMovies {
             movie.setPosterpath(temp.getString(MovieKeys.poster));
             movie.setPopularity(temp.getString(MovieKeys.popularity));
 
+            JSONArray genre = temp.getJSONArray(MovieKeys.genres);
+            for (int j = 0; j < genre.length(); j++) {
+                movie.addGenres(genre.getInt(j));
+            }
             movies.add(movie);
         }
         return movies;

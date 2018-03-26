@@ -1,27 +1,13 @@
 package com.example.shais.moviedatabase.activity;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -34,16 +20,14 @@ import com.example.shais.moviedatabase.adapter.ViewPagerAdapter;
 import com.example.shais.moviedatabase.data_items.Movie;
 import com.example.shais.moviedatabase.fragments.NowPlaying;
 import com.example.shais.moviedatabase.fragments.Upcoming;
-import com.example.shais.moviedatabase.utils.Data;
+import com.example.shais.moviedatabase.utils.Config;
 import com.example.shais.moviedatabase.utils.GlobalLoader;
 import com.example.shais.moviedatabase.utils.ParseMovies;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -97,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     ((NowPlaying) nowplaying).onNowPlayingArrive(mymovies);
-                    GetUpcoming(queue, Data.getUpcomingURI());
+                    GetUpcoming(queue, Config.getUpcomingURI());
                 } catch (JSONException e) {
                     e.printStackTrace();
                     GlobalLoader.FinishMe();
@@ -159,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         new GlobalLoader("Loading Movies...", MainActivity.this, MainActivity.this);
-        GetNowPlaying(Data.getNowPlayingURI());
+        GetNowPlaying(Config.getNowPlayingURI());
 
     }
 

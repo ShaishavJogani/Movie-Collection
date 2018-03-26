@@ -8,8 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.example.shais.moviedatabase.R;
 import com.example.shais.moviedatabase.data_items.Movie;
+import com.example.shais.moviedatabase.utils.ImageDownloader;
 
 import java.util.List;
 
@@ -44,8 +47,11 @@ public class MovieDisplayAdapter extends RecyclerView.Adapter<MovieDisplayAdapte
         Movie m = movies.get(position);
 
         holder.title.setText(m.getName());
-        holder.popularity.setText(m.getPopularity());
+        holder.popularity.setText("Popularity: " + (int)Double.parseDouble(m.getPopularity()));
+        holder.genre.setText(m.getGeners());
 
+        String posteruri = "https://image.tmdb.org/t/p/w500" + m.getPosterpath();
+        holder.poster.setImageUrl(posteruri, ImageDownloader.getInstance(mContext).getImageLoader());
     }
 
     @Override
@@ -61,7 +67,8 @@ public class MovieDisplayAdapter extends RecyclerView.Adapter<MovieDisplayAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView title, popularity;
+        public TextView title, popularity, genre;
+        NetworkImageView poster;
 
 
         public MyViewHolder(View itemView, int viewType) {
@@ -69,6 +76,12 @@ public class MovieDisplayAdapter extends RecyclerView.Adapter<MovieDisplayAdapte
 
             title = (TextView) itemView.findViewById(R.id.tvMovieTitle);
             popularity = (TextView) itemView.findViewById(R.id.tvPopularity);
+            genre = (TextView) itemView.findViewById(R.id.tvGeneres);
+            poster = (NetworkImageView) itemView.findViewById(R.id.ivImagePoster);
+
+            title.setSelected(true);
+            genre.setSelected(true);
+            poster.setDefaultImageResId(android.R.drawable.btn_dialog);
         }
     }
 }
