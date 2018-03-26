@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    /**
+     * Call the API to get the results.
+     * @param url API URL.
+     */
     private void GetNowPlaying(String url) {
         final RequestQueue queue = Volley.newRequestQueue(this);
         Log.d(TAG, "Sending request..." + url);
@@ -77,10 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 try {
 
                     ArrayList<Movie> mymovies = ParseMovies.parseData(response);
-                    Log.d(TAG, mymovies.toString());
 
-
-                    ((NowPlaying) nowplaying).onNowPlayingArrive(mymovies);
+                    ((NowPlaying) nowplaying).moviesDataArrive(mymovies);
                     GetUpcoming(queue, Config.getUpcomingURI());
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -101,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
         return;
     }
 
+    /**
+     * Call the API to get the results.
+     * @param url API URL.
+     */
     private void GetUpcoming(RequestQueue queue, String url) {
         Log.d(TAG, "Sending request..." + url);
 
@@ -110,10 +116,9 @@ public class MainActivity extends AppCompatActivity {
                 try {
 
                     ArrayList<Movie> mymovies = ParseMovies.parseData(response);
-                    Log.d(TAG, mymovies.toString());
                     GlobalLoader.FinishMe();
 
-                    ((Upcoming) upcoming).onNowPlayingArrive(mymovies);
+                    ((Upcoming) upcoming).moviesDataArrive(mymovies);
                     setupViewPager(viewPager);
                     tabLayout.setupWithViewPager(viewPager);
 

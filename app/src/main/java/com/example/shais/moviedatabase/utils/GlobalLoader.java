@@ -1,27 +1,22 @@
 package com.example.shais.moviedatabase.utils;
 
-/**
- * Created by Shaishav on 3/24/2018.
- */
-
-
 import java.util.Timer;
-import java.util.TimerTask;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.WindowManager.BadTokenException;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.shais.moviedatabase.R;
 
+/**
+ * A class to display loading/progress layout. It will freeze your UI to restrict user's interaction while you are loading data.
+ * Created by Shaishav on 3/24/2018.
+ */
 public class GlobalLoader {
 
     public static Dialog dialog;
@@ -44,7 +39,6 @@ public class GlobalLoader {
                 null, false);
         RelativeLayout rLayout = (RelativeLayout) v
                 .findViewById(R.id.progressContainer);
-//			rLayout.setBackgroundResource(R.anim.preloader_animation);
 
         tv = (TextView) v.findViewById(R.id.progress_text);
         tv.setText(PreloaderText);
@@ -62,9 +56,6 @@ public class GlobalLoader {
         try {
             if (dialog != null) {
                 if (dialog.isShowing()) {
-//					if (frameAnimation.isRunning()) {
-//						frameAnimation.stop();
-//					}
                     dialog.dismiss();
                 }
             }

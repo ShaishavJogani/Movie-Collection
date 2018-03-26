@@ -1,5 +1,7 @@
 package com.example.shais.moviedatabase.data_items;
 
+import android.util.Log;
+
 import com.example.shais.moviedatabase.utils.Config;
 
 import java.util.ArrayList;
@@ -10,6 +12,9 @@ import java.util.List;
  */
 
 public class Movie {
+
+    private final String TAG = "Movie";
+
     String id;
     String name, posterpath;
     String popularity;
@@ -64,7 +69,8 @@ public class Movie {
         StringBuilder build = new StringBuilder();
         for (String g : genres)
             build.append(g + ", ");
-        return build.toString().substring(0, build.toString().length()-2);
+        String genres = build.toString();
+        return (genres.length() > 2) ? genres.substring(0, genres.length() - 2) : genres;
 
     }
 }

@@ -9,12 +9,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
+ * Provides method to parse movie data.
  * Created by Shaishav on 3/24/2018.
  */
 
 public class ParseMovies {
 
-
+    /**
+     * Parse the JSON response from the server and returns the list of movies.
+     * @param response A JSONObject
+     * @return List of movies
+     * @throws JSONException
+     */
     public static ArrayList<Movie> parseData(JSONObject response) throws JSONException {
         ArrayList<Movie> movies = new ArrayList<>();
 

@@ -17,6 +17,7 @@ import com.example.shais.moviedatabase.utils.ImageDownloader;
 import java.util.List;
 
 /**
+ * Adapter to bind movies in a recycler view.
  * Created by Shaishav on 3/24/2018.
  */
 

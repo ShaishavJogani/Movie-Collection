@@ -8,14 +8,12 @@ import java.util.HashMap;
 
 public class Config {
 
-    public static final String APIKEY_v4 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjI3YzdjNzg0YWIzNjU4NGY3NTY3MmE3NTM3YmY1MyIsInN1YiI6IjVhYjZlYTE2OTI1MTQxMzk2MTAxMzhkMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.b6ZeOrVpkpMMhZyuOg1Rd7BGUK6O-NTYgokQ7bgb-Ec";
-
     public static String getNowPlayingURI() {
         return getNowPlayingURI(1);
     }
 
     public static String getNowPlayingURI(int pageno) {
-        return "https://api.themoviedb.org/3/movie/now_playing?api_key=2f27c7c784ab36584f75672a7537bf53&language=en-US&page="+pageno;
+        return "https://api.themoviedb.org/3/movie/now_playing?api_key=2f27c7c784ab36584f75672a7537bf53&language=en-US&page=" + pageno;
     }
 
 
@@ -24,36 +22,36 @@ public class Config {
     }
 
     public static String getUpcomingURI(int pageno) {
-        return "https://api.themoviedb.org/3/movie/upcoming?api_key=2f27c7c784ab36584f75672a7537bf53&language=en-US&page="+pageno;
+        return "https://api.themoviedb.org/3/movie/upcoming?api_key=2f27c7c784ab36584f75672a7537bf53&language=en-US&page=" + pageno;
     }
 
     private static HashMap<Integer, String> genres;
 
     private static void createGneres() {
         genres = new HashMap<>();
-        genres.put( 28,"Action");
-        genres.put(12 ,"Adventure");
-        genres.put(16 ,"Animation");
-        genres.put( 35,"Comedy");
-        genres.put(80 ,"Crime");
-        genres.put(99 ,"Documentary");
-        genres.put( 18,"Drama");
-        genres.put(10751 ,"Family");
-        genres.put( 14,"Fantasy");
-        genres.put( 36,"History");
-        genres.put(27 ,"Horror");
-        genres.put( 10402,"Music");
-        genres.put( 9648,"Mystery");
-        genres.put(10749 ,"Romance");
-        genres.put( 878,"Science Fiction");
-        genres.put(10770 ,"TV Movie");
-        genres.put( 53,"Thriller");
-        genres.put( 10752,"War");
-        genres.put( 37,"Western");
+        genres.put(28, "Action");
+        genres.put(12, "Adventure");
+        genres.put(16, "Animation");
+        genres.put(35, "Comedy");
+        genres.put(80, "Crime");
+        genres.put(99, "Documentary");
+        genres.put(18, "Drama");
+        genres.put(10751, "Family");
+        genres.put(14, "Fantasy");
+        genres.put(36, "History");
+        genres.put(27, "Horror");
+        genres.put(10402, "Music");
+        genres.put(9648, "Mystery");
+        genres.put(10749, "Romance");
+        genres.put(878, "Science Fiction");
+        genres.put(10770, "TV Movie");
+        genres.put(53, "Thriller");
+        genres.put(10752, "War");
+        genres.put(37, "Western");
     }
 
     public static String getGenre(int id) {
-        if(genres==null)
+        if (genres == null)
             createGneres();
         return genres.get(id);
     }

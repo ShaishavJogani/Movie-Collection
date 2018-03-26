@@ -6,6 +6,7 @@ package com.example.shais.moviedatabase.utils;
 
 public class MovieKeys {
 
+    public static final String total_pages = "total_pages";
     public static final String results = "results";
     public static final String movie_id = "id";
     public static final String movie_title = "title";
